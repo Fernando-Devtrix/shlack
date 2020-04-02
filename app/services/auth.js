@@ -10,7 +10,7 @@ export default class AuthService extends Service {
    */
   @service router
 
-  get currentUser() {
+  get currentUserId() {
     return window.localStorage.getItem(AUTH_KEY);
   }
 
