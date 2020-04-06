@@ -2,7 +2,7 @@
 <nav
   class="team-selector bg-indigo-darkest border-indigo-darkest border-r-2 pt-2 text-purple-lighter flex-none hidden sm:block">
   {{#each @teams as |team|}}
-    <LinkTo @route="teams.team" @model={{team.id}} data-team-id={{team.id}}
+    <LinkTo @model={{team.id}} @route="teams.team" data-team-id={{team.id}}
     class="team-selector__team-button cursor-pointer rounded-lg p-2 pl-4 block no-underline opacity-25 opacity-100">
       <div
         class="bg-white h-12 w-12 flex items-center justify-center text-black text-2xl font-semibold rounded-lg mb-1 overflow-hidden">

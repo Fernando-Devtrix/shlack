@@ -2,8 +2,8 @@
 <main class="flex-1 flex flex-col bg-white overflow-hidden channel">
 
   <ChannelHeader 
-    @title="Frontend Chat"
-    @description="CSS ans JS chat" />
+    @title={{this.model.name}}
+    @description={{this.model.description}} />
   {{format-timestamp "03-27-19"}}
   {{!-- Channel Message List --}}
   <div class="py-4 flex-1 overflow-y-scroll channel-messages-list" role="list">
