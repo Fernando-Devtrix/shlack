@@ -9,7 +9,7 @@ export default class TeamsTeamIndexRoute extends Route {
       this.replaceWith(
         'teams.team.channel', 
         id,
-        channels[1].id
+        channels[0].id
       );
     }
   }
