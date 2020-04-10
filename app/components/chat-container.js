@@ -27,6 +27,20 @@ export default class ChatContainerComponent extends Component {
   }
 
   @action
+  async deleteMessage(messageId) {
+    const resp = await fetch(`/api/messages/${messageId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const messageIds = this.messages.map(m => m.id);
+    const idToDelete =  messageIds.indexOf(messageId);
+    this.messages.splice(idToDelete, 1);
+    this.messages = this.messages; // necesary for @tracked
+  }
+
+  @action
   async createMessage(body) {
     const {
       // @ts-ignore
@@ -47,5 +61,12 @@ export default class ChatContainerComponent extends Component {
         body,
       }),
     });
+    if (!resp.ok) throw Error('Could not save chat Message');
+    const messageData = await resp.json();
+    const user = await(await fetch(`/api/users/${userId}`)).json();
+    this.messages = [
+      ...this.messages,
+      { ...messageData, user }
+    ]
   }
 }
